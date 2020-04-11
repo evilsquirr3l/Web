@@ -1,15 +1,13 @@
+using System.Collections.Generic;
+
 namespace DAL.Entities
 {
     public class DetailTemplate : BaseEntity
     {
-        public int InputRadiodetailId { get; set; }
+        public ICollection<Detail> InputDetails { get; set; }
 
-        public Radiodetail InputRadiodetail { get; set; }
+        public int DetailId { get; set; }
         
-        public int OutputRadiodetailId { get; set; }
-
-        public Radiodetail OutputRadiodetail { get; set; }
-
         public int ProductionId { get; set; }
 
         public Production Production { get; set; }

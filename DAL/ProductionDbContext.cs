@@ -11,7 +11,7 @@ namespace DAL
 
         public DbSet<Production> Productions { get; set; }
 
-        public DbSet<Radiodetail> Radiodetails { get; set; }
+        public DbSet<Detail> Details { get; set; }
 
         public ProductionDbContext(DbContextOptions<ProductionDbContext> options) : base(options)
         {
