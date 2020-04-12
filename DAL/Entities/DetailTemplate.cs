@@ -6,7 +6,7 @@ namespace DAL.Entities
     {
         public ICollection<Detail> InputDetails { get; set; }
 
-        public int DetailId { get; set; }
+        public int OutputDetailId { get; set; }
         
         public int ProductionId { get; set; }
 
