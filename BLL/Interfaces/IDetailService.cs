@@ -11,7 +11,7 @@ namespace BLL.Interfaces
 
         IEnumerable<DetailModel> FindByName(string name);
 
-        IEnumerable<DetailModel> FindByData(DateTime dateTime);
+        IEnumerable<DetailModel> FindByDate(DateTime dateTime);
 
         Task<DetailModel> FindByTemplateId(int templateId);
     }
