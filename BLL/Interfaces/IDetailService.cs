@@ -7,7 +7,9 @@ namespace BLL.Interfaces
 {
     public interface IDetailService
     {
-        IEnumerable<DetailModel> FindByName();
+        IEnumerable<DetailModel> GetAll();
+
+        IEnumerable<DetailModel> FindByName(string name);
 
         IEnumerable<DetailModel> FindByData(DateTime dateTime);
 
