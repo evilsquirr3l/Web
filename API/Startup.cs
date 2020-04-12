@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BLL.Automapper;
 using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,8 @@ namespace API
             services.AddControllers();
 
             services.AddDbContext<ProductionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Production")));
+
+            services.AddMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
