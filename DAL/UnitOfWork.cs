@@ -8,19 +8,19 @@ namespace DAL
     {
         private readonly ProductionDbContext _context;
         
-        public UnitOfWork(IRepository<Category> categoryRepository, IRepository<DetailTemplate> detailTemplateRepository, IRepository<Production> productionRepository, IRepository<Detail> radiodetailRepository, ProductionDbContext context)
+        public UnitOfWork(IRepository<Category> categoryRepository, IRepository<DetailTemplate> detailTemplateRepository, IRepository<Production> productionRepository, IRepository<Detail> detailRepository, ProductionDbContext context)
         {
             CategoryRepository = categoryRepository;
             DetailTemplateRepository = detailTemplateRepository;
             ProductionRepository = productionRepository;
-            RadiodetailRepository = radiodetailRepository;
+            DetailRepository = detailRepository;
             _context = context;
         }
 
         public IRepository<Category> CategoryRepository { get; }
         public IRepository<DetailTemplate> DetailTemplateRepository { get; }
         public IRepository<Production> ProductionRepository { get; }
-        public IRepository<Detail> RadiodetailRepository { get; }
+        public IRepository<Detail> DetailRepository { get; }
         
         public async Task<int> Save()
         {

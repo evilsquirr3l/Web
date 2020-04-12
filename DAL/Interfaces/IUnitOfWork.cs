@@ -11,7 +11,7 @@ namespace DAL.Interfaces
 
         public IRepository<Production> ProductionRepository { get; }
 
-        public IRepository<Detail> RadiodetailRepository { get; }
+        public IRepository<Detail> DetailRepository { get; }
 
         Task<int> Save();
     }
