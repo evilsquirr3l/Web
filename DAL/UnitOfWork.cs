@@ -7,8 +7,10 @@ namespace DAL
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ProductionDbContext _context;
-        
-        public UnitOfWork(IRepository<Category> categoryRepository, IRepository<DetailTemplate> detailTemplateRepository, IRepository<Production> productionRepository, IRepository<Detail> detailRepository, ProductionDbContext context)
+
+        public UnitOfWork(IRepository<Category> categoryRepository,
+            IRepository<DetailTemplate> detailTemplateRepository, IRepository<Production> productionRepository,
+            IRepository<Detail> detailRepository, ProductionDbContext context)
         {
             CategoryRepository = categoryRepository;
             DetailTemplateRepository = detailTemplateRepository;
@@ -21,7 +23,7 @@ namespace DAL
         public IRepository<DetailTemplate> DetailTemplateRepository { get; }
         public IRepository<Production> ProductionRepository { get; }
         public IRepository<Detail> DetailRepository { get; }
-        
+
         public async Task<int> Save()
         {
             return await _context.SaveChangesAsync();

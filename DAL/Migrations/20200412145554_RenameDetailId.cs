@@ -7,12 +7,12 @@ namespace DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "DetailId",
-                table: "DetailTemplates");
+                "DetailId",
+                "DetailTemplates");
 
             migrationBuilder.AddColumn<int>(
-                name: "OutputDetailId",
-                table: "DetailTemplates",
+                "OutputDetailId",
+                "DetailTemplates",
                 nullable: false,
                 defaultValue: 0);
         }
@@ -20,13 +20,13 @@ namespace DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "OutputDetailId",
-                table: "DetailTemplates");
+                "OutputDetailId",
+                "DetailTemplates");
 
             migrationBuilder.AddColumn<int>(
-                name: "DetailId",
-                table: "DetailTemplates",
-                type: "int",
+                "DetailId",
+                "DetailTemplates",
+                "int",
                 nullable: false,
                 defaultValue: 0);
         }

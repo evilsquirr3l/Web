@@ -8,121 +8,118 @@ namespace DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
+                "Categories",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Categories", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Productions",
-                columns: table => new
+                "Productions",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
-                    CategoryId = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Productions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Productions_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
+                        "FK_Productions_Categories_CategoryId",
+                        x => x.CategoryId,
+                        "Categories",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DetailTemplates",
-                columns: table => new
+                "DetailTemplates",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DetailId = table.Column<int>(nullable: false),
-                    ProductionId = table.Column<int>(nullable: false)
+                    DetailId = table.Column<int>(),
+                    ProductionId = table.Column<int>()
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DetailTemplates", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DetailTemplates_Productions_ProductionId",
-                        column: x => x.ProductionId,
-                        principalTable: "Productions",
-                        principalColumn: "Id",
+                        "FK_DetailTemplates_Productions_ProductionId",
+                        x => x.ProductionId,
+                        "Productions",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Details",
-                columns: table => new
+                "Details",
+                table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>()
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: false),
-                    DetailTemplateId = table.Column<int>(nullable: false),
+                    CreationTime = table.Column<DateTime>(),
+                    DetailTemplateId = table.Column<int>(),
                     ProductionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Details", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Details_DetailTemplates_DetailTemplateId",
-                        column: x => x.DetailTemplateId,
-                        principalTable: "DetailTemplates",
-                        principalColumn: "Id",
+                        "FK_Details_DetailTemplates_DetailTemplateId",
+                        x => x.DetailTemplateId,
+                        "DetailTemplates",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Details_Productions_ProductionId",
-                        column: x => x.ProductionId,
-                        principalTable: "Productions",
-                        principalColumn: "Id",
+                        "FK_Details_Productions_ProductionId",
+                        x => x.ProductionId,
+                        "Productions",
+                        "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Details_DetailTemplateId",
-                table: "Details",
-                column: "DetailTemplateId");
+                "IX_Details_DetailTemplateId",
+                "Details",
+                "DetailTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Details_ProductionId",
-                table: "Details",
-                column: "ProductionId");
+                "IX_Details_ProductionId",
+                "Details",
+                "ProductionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetailTemplates_ProductionId",
-                table: "DetailTemplates",
-                column: "ProductionId");
+                "IX_DetailTemplates_ProductionId",
+                "DetailTemplates",
+                "ProductionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Productions_CategoryId",
-                table: "Productions",
-                column: "CategoryId");
+                "IX_Productions_CategoryId",
+                "Productions",
+                "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Details");
+                "Details");
 
             migrationBuilder.DropTable(
-                name: "DetailTemplates");
+                "DetailTemplates");
 
             migrationBuilder.DropTable(
-                name: "Productions");
+                "Productions");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                "Categories");
         }
     }
 }

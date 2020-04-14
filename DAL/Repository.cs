@@ -8,7 +8,7 @@ namespace DAL
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        private DbSet<TEntity> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public Repository(ProductionDbContext context)
         {
@@ -26,7 +26,7 @@ namespace DAL
         }
 
         public async Task Create(TEntity entity)
-        { 
+        {
             await _dbSet.AddAsync(entity);
         }
 
