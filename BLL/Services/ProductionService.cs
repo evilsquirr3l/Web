@@ -25,10 +25,10 @@ namespace BLL.Services
             return _mapper.Map<IEnumerable<ProductionModel>>(productions);
         }
 
-        public ProductionModel GetProduction(DetailModel detail)
+        public ProductionModel GetProduction(int detailId)
         {
             var productionWithDetail =
-                _unit.DetailTemplateRepository.GetAll().Where(t => t.OutputDetailId.Equals(detail.Id));
+                _unit.DetailTemplateRepository.GetAll().Where(t => t.OutputDetailId.Equals(detailId));
 
             return _mapper.Map<ProductionModel>(productionWithDetail);
         }

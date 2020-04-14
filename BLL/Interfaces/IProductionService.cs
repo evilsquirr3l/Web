@@ -7,6 +7,6 @@ namespace BLL.Interfaces
     {
         IEnumerable<ProductionModel> GetAll();
         
-        ProductionModel GetProduction(DetailModel detail);
+        ProductionModel GetProduction(int detailId);
     }
 }
