@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Automapper;
+using BLL.Interfaces;
+using BLL.Services;
 using DAL;
+using DAL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,15 +33,25 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddDbContext<ProductionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Production")));
-
-            services.AddMapper();
             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Production", Version = "v1" });
             });
+
+            services.AddDbContext<ProductionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Production")));
+
+            services.AddMapper();
+            
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddTransient<IDetailService, DetailService>();
+
+            services.AddTransient<IProductionService, ProductionService>();
+
+            services.AddTransient<ITemplateService, TemplateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
