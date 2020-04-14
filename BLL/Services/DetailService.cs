@@ -11,8 +11,8 @@ namespace BLL.Services
 {
     public class DetailService : IDetailService
     {
-        private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unit;
 
         public DetailService(IMapper mapper, IUnitOfWork unit)
         {

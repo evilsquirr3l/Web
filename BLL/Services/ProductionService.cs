@@ -9,8 +9,8 @@ namespace BLL.Services
 {
     public class ProductionService : IProductionService
     {
-        private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unit;
 
         public ProductionService(IMapper mapper, IUnitOfWork unit)
         {

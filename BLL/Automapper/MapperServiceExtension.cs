@@ -9,8 +9,8 @@ namespace BLL.Automapper
         {
             var mapperConfig = new MapperConfiguration(c => c.AddProfile(new AutomapperProfile()));
 
-            IMapper mapper = mapperConfig.CreateMapper();
-            
+            var mapper = mapperConfig.CreateMapper();
+
             services.AddSingleton(mapper);
 
             return services;

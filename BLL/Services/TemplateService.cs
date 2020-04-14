@@ -9,8 +9,8 @@ namespace BLL.Services
 {
     public class TemplateService : ITemplateService
     {
-        private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unit;
 
         public TemplateService(IMapper mapper, IUnitOfWork unit)
         {

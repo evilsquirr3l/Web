@@ -6,7 +6,7 @@ namespace BLL.Interfaces
     public interface ITemplateService
     {
         IEnumerable<DetailTemplateModel> GetAll();
-        
+
         DetailTemplateModel FindByComponentBaseId(int id);
     }
 }

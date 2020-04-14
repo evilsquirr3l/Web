@@ -6,7 +6,7 @@ namespace BLL.Interfaces
     public interface IProductionService
     {
         IEnumerable<ProductionModel> GetAll();
-        
+
         ProductionModel GetProduction(int detailId);
     }
 }
