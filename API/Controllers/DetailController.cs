@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +22,7 @@ namespace API.Controllers
         {
             return Ok(_detailService.GetAll());
         }
-        
+
         [HttpGet("{date}")]
         public ActionResult<DetailModel> GetDetailByDate(DateTime dateTime)
         {
@@ -31,7 +30,7 @@ namespace API.Controllers
 
             return Ok(detail);
         }
-        
+
         [HttpGet("{name}")]
         public ActionResult<DetailModel> GetDetailByName(string name)
         {
@@ -39,7 +38,7 @@ namespace API.Controllers
 
             return Ok(detail);
         }
-        
+
         [HttpGet("{templateId}")]
         public ActionResult<DetailModel> GetDetailByName(int id)
         {

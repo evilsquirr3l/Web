@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +21,7 @@ namespace API.Controllers
         {
             return Ok(_productionService.GetAll());
         }
-        
+
         [HttpGet("{detailId}")]
         public ActionResult<DetailModel> GetDetailByDate(int detailId)
         {
