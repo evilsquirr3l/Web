@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Data.Interfaces;
+using Data.Abstraction;
 using Entities;
 
 namespace Data.Implementation

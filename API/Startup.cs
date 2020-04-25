@@ -1,8 +1,7 @@
 using BLL.Automapper;
 using BLL.Interfaces;
 using BLL.Services;
-using DAL;
-using DAL.Interfaces;
+using Data.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -32,14 +31,9 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Production", Version = "v1"});
             });
 
-            services.AddDbContext<ProductionDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Production")));
-
+            services.RegisterDataServices(Configuration.GetConnectionString("Production"));
+            
             services.AddMapper();
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddTransient<IDetailService, DetailService>();
 
