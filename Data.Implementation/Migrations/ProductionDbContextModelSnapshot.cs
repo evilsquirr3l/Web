@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace Data.Implementation.Migrations
 {
     [DbContext(typeof(ProductionDbContext))]
-    partial class ProductionDbContextModelSnapshot : ModelSnapshot
+    internal class ProductionDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -19,161 +19,165 @@ namespace Data.Implementation.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Data.Implementation.Data.Entities.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string>("Type")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                b.ToTable("Categories");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Some category",
-                            Type = "Some type"
-                        });
-                });
-
-            modelBuilder.Entity("Data.Implementation.Data.Entities.Detail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DetailTemplateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DetailTemplateId");
-
-                    b.HasIndex("ProductionId");
-
-                    b.ToTable("Details");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreationTime = new DateTime(2020, 4, 24, 17, 42, 54, 120, DateTimeKind.Local).AddTicks(3620),
-                            DetailTemplateId = 1,
-                            Name = "Detail 1"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreationTime = new DateTime(2020, 4, 23, 17, 42, 54, 128, DateTimeKind.Local).AddTicks(6230),
-                            DetailTemplateId = 1,
-                            Name = "Detail 2"
-                        });
-                });
-
-            modelBuilder.Entity("Data.Implementation.Data.Entities.DetailTemplate", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OutputDetailId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductionId");
-
-                    b.ToTable("DetailTemplates");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            OutputDetailId = 2,
-                            ProductionId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Data.Implementation.Data.Entities.Production", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Productions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            Name = "Production1"
-                        });
-                });
+                b.HasData(
+                    new
+                    {
+                        Id = 1,
+                        Name = "Some category",
+                        Type = "Some type"
+                    });
+            });
 
             modelBuilder.Entity("Data.Implementation.Data.Entities.Detail", b =>
-                {
-                    b.HasOne("Data.Implementation.Data.Entities.DetailTemplate", "DetailTemplate")
-                        .WithMany("InputDetails")
-                        .HasForeignKey("DetailTemplateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasOne("Data.Implementation.Data.Entities.Production", null)
-                        .WithMany("Details")
-                        .HasForeignKey("ProductionId");
-                });
+                b.Property<DateTime>("CreationTime")
+                    .HasColumnType("datetime2");
+
+                b.Property<int>("DetailTemplateId")
+                    .HasColumnType("int");
+
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int?>("ProductionId")
+                    .HasColumnType("int");
+
+                b.HasKey("Id");
+
+                b.HasIndex("DetailTemplateId");
+
+                b.HasIndex("ProductionId");
+
+                b.ToTable("Details");
+
+                b.HasData(
+                    new
+                    {
+                        Id = 1,
+                        CreationTime = new DateTime(2020, 4, 24, 17, 42, 54, 120, DateTimeKind.Local).AddTicks(3620),
+                        DetailTemplateId = 1,
+                        Name = "Detail 1"
+                    },
+                    new
+                    {
+                        Id = 2,
+                        CreationTime = new DateTime(2020, 4, 23, 17, 42, 54, 128, DateTimeKind.Local).AddTicks(6230),
+                        DetailTemplateId = 1,
+                        Name = "Detail 2"
+                    });
+            });
 
             modelBuilder.Entity("Data.Implementation.Data.Entities.DetailTemplate", b =>
-                {
-                    b.HasOne("Data.Implementation.Data.Entities.Production", "Production")
-                        .WithMany()
-                        .HasForeignKey("ProductionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<int>("OutputDetailId")
+                    .HasColumnType("int");
+
+                b.Property<int>("ProductionId")
+                    .HasColumnType("int");
+
+                b.HasKey("Id");
+
+                b.HasIndex("ProductionId");
+
+                b.ToTable("DetailTemplates");
+
+                b.HasData(
+                    new
+                    {
+                        Id = 1,
+                        OutputDetailId = 2,
+                        ProductionId = 1
+                    });
+            });
 
             modelBuilder.Entity("Data.Implementation.Data.Entities.Production", b =>
-                {
-                    b.HasOne("Data.Implementation.Data.Entities.Category", "Category")
-                        .WithMany("Productions")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy",
+                        SqlServerValueGenerationStrategy.IdentityColumn);
+
+                b.Property<int>("CategoryId")
+                    .HasColumnType("int");
+
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("Id");
+
+                b.HasIndex("CategoryId");
+
+                b.ToTable("Productions");
+
+                b.HasData(
+                    new
+                    {
+                        Id = 1,
+                        CategoryId = 1,
+                        Name = "Production1"
+                    });
+            });
+
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Detail", b =>
+            {
+                b.HasOne("Data.Implementation.Data.Entities.DetailTemplate", "DetailTemplate")
+                    .WithMany("InputDetails")
+                    .HasForeignKey("DetailTemplateId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("Data.Implementation.Data.Entities.Production", null)
+                    .WithMany("Details")
+                    .HasForeignKey("ProductionId");
+            });
+
+            modelBuilder.Entity("Data.Implementation.Data.Entities.DetailTemplate", b =>
+            {
+                b.HasOne("Data.Implementation.Data.Entities.Production", "Production")
+                    .WithMany()
+                    .HasForeignKey("ProductionId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Production", b =>
+            {
+                b.HasOne("Data.Implementation.Data.Entities.Category", "Category")
+                    .WithMany("Productions")
+                    .HasForeignKey("CategoryId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
 #pragma warning restore 612, 618
         }
     }

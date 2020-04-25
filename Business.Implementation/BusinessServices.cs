@@ -19,7 +19,7 @@ namespace Business.Implementation
             var mapper = mapperConfig.CreateMapper();
 
             services.AddSingleton(mapper);
-            
+
             return services;
         }
     }
