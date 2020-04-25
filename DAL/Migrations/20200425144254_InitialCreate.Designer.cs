@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DAL.Migrations
+namespace dal.Migrations
 {
     [DbContext(typeof(ProductionDbContext))]
-    [Migration("20200412145554_RenameDetailId")]
-    partial class RenameDetailId
+    [Migration("20200425144254_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,14 @@ namespace DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Some category",
+                            Type = "Some type"
+                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.Detail", b =>
@@ -65,6 +73,22 @@ namespace DAL.Migrations
                     b.HasIndex("ProductionId");
 
                     b.ToTable("Details");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreationTime = new DateTime(2020, 4, 24, 17, 42, 54, 120, DateTimeKind.Local).AddTicks(3620),
+                            DetailTemplateId = 1,
+                            Name = "Detail 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreationTime = new DateTime(2020, 4, 23, 17, 42, 54, 128, DateTimeKind.Local).AddTicks(6230),
+                            DetailTemplateId = 1,
+                            Name = "Detail 2"
+                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.DetailTemplate", b =>
@@ -85,6 +109,14 @@ namespace DAL.Migrations
                     b.HasIndex("ProductionId");
 
                     b.ToTable("DetailTemplates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OutputDetailId = 2,
+                            ProductionId = 1
+                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.Production", b =>
@@ -105,6 +137,14 @@ namespace DAL.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Productions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            Name = "Production1"
+                        });
                 });
 
             modelBuilder.Entity("DAL.Entities.Detail", b =>
