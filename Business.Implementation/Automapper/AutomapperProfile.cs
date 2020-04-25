@@ -1,5 +1,5 @@
 using AutoMapper;
-using BLL.Models;
+using Business.Models;
 using Data.Entities;
 
 namespace Business.Implementation.Automapper

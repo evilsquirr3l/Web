@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using BLL.Interfaces;
-using BLL.Models;
+using Business.Abstraction;
+using Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers

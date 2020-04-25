@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using BLL.Interfaces;
-using BLL.Models;
+using Business.Abstraction;
+using Business.Models;
 using Data.Abstraction;
 
 namespace Business.Implementation.Services

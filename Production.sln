@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Abstraction", "Data.Ab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Entities", "Data.Entities\Data.Entities.csproj", "{87FD81FB-FE79-4DC7-8A03-7D61BE105632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Models", "Data.Models\Data.Models.csproj", "{272E010D-896B-4AC4-9BD6-439C0B803ECF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Models", "Business.Models\Business.Models.csproj", "{272E010D-896B-4AC4-9BD6-439C0B803ECF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Abstraction", "Business.Abstraction\Business.Abstraction.csproj", "{D9232850-D738-437F-9301-A6D10DBB983D}"
 EndProject

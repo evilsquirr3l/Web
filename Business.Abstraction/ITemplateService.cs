@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using BLL.Models;
+using Business.Models;
 
-namespace BLL.Interfaces
+namespace Business.Abstraction
 {
     public interface ITemplateService
     {

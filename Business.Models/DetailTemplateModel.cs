@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BLL.Models
+namespace Business.Models
 {
     public class DetailTemplateModel
     {

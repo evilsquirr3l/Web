@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BLL.Models;
+using Business.Models;
 
-namespace BLL.Interfaces
+namespace Business.Abstraction
 {
     public interface IDetailService
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace BLL.Models
+namespace Business.Models
 {
     public class DetailModel
     {
