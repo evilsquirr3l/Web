@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using DAL.Entities;
-using DAL.Interfaces;
+using Data.Interfaces;
+using Entities;
 
-namespace DAL
+namespace Data.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {

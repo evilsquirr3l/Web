@@ -1,6 +1,6 @@
 using System;
 
-namespace DAL.Entities
+namespace Entities
 {
     public class Detail : BaseEntity
     {

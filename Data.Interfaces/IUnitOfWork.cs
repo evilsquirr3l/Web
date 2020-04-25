@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using DAL.Entities;
+using Entities;
 
-namespace DAL.Interfaces
+namespace Data.Interfaces
 {
     public interface IUnitOfWork
     {

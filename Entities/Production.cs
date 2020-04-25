@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DAL.Entities
+namespace Entities
 {
     public class Production : BaseEntity
     {

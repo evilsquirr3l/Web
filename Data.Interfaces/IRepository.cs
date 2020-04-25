@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
-using DAL.Entities;
+using Entities;
 
-namespace DAL.Interfaces
+namespace Data.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {

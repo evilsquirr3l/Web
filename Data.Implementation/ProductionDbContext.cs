@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
-using DAL.Entities;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL
+namespace Data.Implementation
 {
     public class ProductionDbContext : DbContext
     {
