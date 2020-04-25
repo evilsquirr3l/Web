@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Abstraction;
-using Entities;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.Implementation

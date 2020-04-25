@@ -20,7 +20,7 @@ namespace Data.Implementation.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Data.Implementation.Entities.Category", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace Data.Implementation.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.Detail", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Detail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +90,7 @@ namespace Data.Implementation.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.DetailTemplate", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.DetailTemplate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,7 +118,7 @@ namespace Data.Implementation.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.Production", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Production", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,31 +146,31 @@ namespace Data.Implementation.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.Detail", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Detail", b =>
                 {
-                    b.HasOne("Data.Implementation.Entities.DetailTemplate", "DetailTemplate")
+                    b.HasOne("Data.Implementation.Data.Entities.DetailTemplate", "DetailTemplate")
                         .WithMany("InputDetails")
                         .HasForeignKey("DetailTemplateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Data.Implementation.Entities.Production", null)
+                    b.HasOne("Data.Implementation.Data.Entities.Production", null)
                         .WithMany("Details")
                         .HasForeignKey("ProductionId");
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.DetailTemplate", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.DetailTemplate", b =>
                 {
-                    b.HasOne("Data.Implementation.Entities.Production", "Production")
+                    b.HasOne("Data.Implementation.Data.Entities.Production", "Production")
                         .WithMany()
                         .HasForeignKey("ProductionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Data.Implementation.Entities.Production", b =>
+            modelBuilder.Entity("Data.Implementation.Data.Entities.Production", b =>
                 {
-                    b.HasOne("Data.Implementation.Entities.Category", "Category")
+                    b.HasOne("Data.Implementation.Data.Entities.Category", "Category")
                         .WithMany("Productions")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

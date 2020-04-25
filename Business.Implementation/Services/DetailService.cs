@@ -7,7 +7,7 @@ using BLL.Interfaces;
 using BLL.Models;
 using Data.Abstraction;
 
-namespace BLL.Services
+namespace Business.Implementation.Services
 {
     public class DetailService : IDetailService
     {

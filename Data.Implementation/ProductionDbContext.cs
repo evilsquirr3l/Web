@@ -1,5 +1,5 @@
 using System;
-using Entities;
+using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.Implementation

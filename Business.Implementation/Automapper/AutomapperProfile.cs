@@ -1,8 +1,8 @@
 using AutoMapper;
 using BLL.Models;
-using Entities;
+using Data.Entities;
 
-namespace BLL.Automapper
+namespace Business.Implementation.Automapper
 {
     public class AutomapperProfile : Profile
     {

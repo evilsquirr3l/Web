@@ -1,6 +1,6 @@
 using System;
 
-namespace Entities
+namespace Data.Entities
 {
     public class Detail : BaseEntity
     {

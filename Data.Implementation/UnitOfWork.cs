@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Data.Abstraction;
-using Entities;
+using Data.Entities;
 
 namespace Data.Implementation
 {

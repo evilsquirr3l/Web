@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BLL.Automapper
+namespace Business.Implementation.Automapper
 {
     public static class MapperServiceExtension
     {

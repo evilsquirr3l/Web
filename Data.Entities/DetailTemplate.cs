@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Entities
+namespace Data.Entities
 {
     public class DetailTemplate : BaseEntity
     {

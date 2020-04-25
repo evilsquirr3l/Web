@@ -1,6 +1,4 @@
-using BLL.Automapper;
-using BLL.Interfaces;
-using BLL.Services;
+using Business.Implementation;
 using Data.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,14 +29,8 @@ namespace API
             });
 
             services.RegisterDataServices(Configuration.GetConnectionString("Production"));
-            
-            services.AddMapper();
 
-            services.AddTransient<IDetailService, DetailService>();
-
-            services.AddTransient<IProductionService, ProductionService>();
-
-            services.AddTransient<ITemplateService, TemplateService>();
+            services.RegisterBusinessServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
