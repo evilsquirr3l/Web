@@ -23,6 +23,8 @@ namespace DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            #region SeedData
             
             var detail1 = new Detail()
             {
@@ -37,7 +39,8 @@ namespace DAL
                 Id = 2,
                 Name = "Detail 2",
                 CreationTime = DateTime.Now.AddDays(-2),
-                DetailTemplateId = 1
+                DetailTemplateId = 1,
+                
             };
             
             var detailTemplate = new DetailTemplate()
@@ -64,6 +67,9 @@ namespace DAL
             modelBuilder.Entity<DetailTemplate>().HasData(detailTemplate);
             modelBuilder.Entity<Production>().HasData(production);
             modelBuilder.Entity<Category>().HasData(cat1);
+            
+            #endregion
+            
         }
     }
 }
