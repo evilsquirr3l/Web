@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BLL.Interfaces;
 using BLL.Models;
-using DAL.Interfaces;
+using Data.Abstraction;
 
 namespace BLL.Services
 {
