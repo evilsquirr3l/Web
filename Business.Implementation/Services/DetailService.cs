@@ -55,5 +55,13 @@ namespace Business.Implementation.Services
             
             await _unit.Save();
         }
+
+        public async Task Create(DetailModel detailModel)
+        {
+            var detailEntity = _mapper.Map<Detail>(detailModel);
+
+            await _unit.DetailRepository.Create(detailEntity);
+            await _unit.Save();
+        }
     }
 }

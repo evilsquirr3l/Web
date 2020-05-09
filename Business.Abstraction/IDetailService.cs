@@ -16,5 +16,7 @@ namespace Business.Abstraction
         Task<DetailModel> FindByTemplateId(int templateId);
 
         Task DeleteById(int detailId);
+
+        Task Create(DetailModel detailModel);
     }
 }

@@ -56,5 +56,13 @@ namespace API.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(DetailModel detailModel)
+        {
+            await _detailService.Create(detailModel);
+
+            return Ok(detailModel);
+        }
     }
 }
