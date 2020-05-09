@@ -64,5 +64,13 @@ namespace API.Controllers
 
             return Ok(detailModel);
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(DetailModel detailModel)
+        {
+            await _detailService.UpdateAsync(detailModel);
+
+            return Ok(detailModel);
+        }
     }
 }

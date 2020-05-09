@@ -18,5 +18,7 @@ namespace Business.Abstraction
         Task DeleteById(int detailId);
 
         Task Create(DetailModel detailModel);
+
+        Task UpdateAsync(DetailModel detailModel);
     }
 }
