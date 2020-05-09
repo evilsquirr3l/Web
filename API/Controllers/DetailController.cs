@@ -25,26 +25,26 @@ namespace API.Controllers
             return Ok(_detailService.GetAll());
         }
 
-        [HttpGet("date/{date}")]
-        public async Task<ActionResult<DetailModel>> GetDetailByDate(DateTime dateTime)
+        [HttpGet("{dateTime:datetime}")]
+        public async Task<ActionResult<IEnumerable<DetailModel>>> GetByDate(DateTime dateTime)
         {
             var detail = _detailService.FindByDate(dateTime);
 
             return Ok(detail);
         }
 
-        [HttpGet("name/{name}")]
-        public async Task< ActionResult<DetailModel>> GetDetailByName(string name)
+        [HttpGet("{detailName}")]
+        public async Task<ActionResult<DetailModel>> GetByName(string detailName)
         {
-            var detail = _detailService.FindByName(name);
+            var detail = _detailService.FindByName(detailName);
 
             return Ok(detail);
         }
 
-        [HttpGet("{templateId}")]
-        public async Task<ActionResult<DetailModel>> GetDetailByName(int id)
+        [HttpGet("{templateId:int}")]
+        public async Task<ActionResult<DetailModel>> GetByTemplateId(int templateId)
         {
-            var detail = _detailService.FindByTemplateId(id);
+            var detail = _detailService.FindByTemplateId(templateId);
 
             return Ok(detail);
         }
