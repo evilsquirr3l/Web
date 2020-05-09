@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Business.Abstraction;
 using Business.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,21 +20,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<DetailModel>> GetAll()
+        public async Task<ActionResult<IEnumerable<DetailModel>>> GetAll()
         {
             return Ok(_detailService.GetAll());
         }
 
-        [HttpGet("{date}")]
-        public ActionResult<DetailModel> GetDetailByDate(DateTime dateTime)
+        [HttpGet("date/{date}")]
+        public async Task<ActionResult<DetailModel>> GetDetailByDate(DateTime dateTime)
         {
             var detail = _detailService.FindByDate(dateTime);
 
             return Ok(detail);
         }
 
-        [HttpGet("{name}")]
-        public ActionResult<DetailModel> GetDetailByName(string name)
+        [HttpGet("name/{name}")]
+        public async Task< ActionResult<DetailModel>> GetDetailByName(string name)
         {
             var detail = _detailService.FindByName(name);
 
@@ -41,7 +42,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{templateId}")]
-        public ActionResult<DetailModel> GetDetailByName(int id)
+        public async Task<ActionResult<DetailModel>> GetDetailByName(int id)
         {
             var detail = _detailService.FindByTemplateId(id);
 

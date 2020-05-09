@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Business.Abstraction;
 using Business.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +19,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ProductionModel>> GetAll()
+        public async Task<ActionResult<IEnumerable<ProductionModel>>> GetAll()
         {
             return Ok(_productionService.GetAll());
         }
 
         [HttpGet("{detailId}")]
-        public ActionResult<DetailModel> GetDetailByDate(int detailId)
+        public async Task<ActionResult<DetailModel>> GetDetailByDate(int detailId)
         {
             var production = _productionService.GetProduction(detailId);
 

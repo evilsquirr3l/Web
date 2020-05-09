@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Business.Abstraction;
 using Business.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +19,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<DetailTemplateModel>> GetAll()
+        public async Task<ActionResult<IEnumerable<DetailTemplateModel>>> GetAll()
         {
             return Ok(_templateService.GetAll());
         }
 
         [HttpGet("{componentBaseId}")]
-        public ActionResult<DetailTemplateModel> ComponentBaseId(int id)
+        public async Task<ActionResult<DetailTemplateModel>> ComponentBaseId(int id)
         {
             var detailTemplate = _templateService.FindByComponentBaseId(id);
 
