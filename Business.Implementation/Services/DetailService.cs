@@ -6,6 +6,7 @@ using AutoMapper;
 using Business.Abstraction;
 using Business.Models;
 using Data.Abstraction;
+using Data.Entities;
 
 namespace Business.Implementation.Services
 {
@@ -46,6 +47,13 @@ namespace Business.Implementation.Services
             var detail = await _unit.DetailTemplateRepository.GetById(templateId);
 
             return _mapper.Map<DetailModel>(detail);
+        }
+
+        public async Task DeleteById(int detailId)
+        {
+            await _unit.DetailRepository.DeleteByIdAsync(detailId);
+            
+            await _unit.Save();
         }
     }
 }

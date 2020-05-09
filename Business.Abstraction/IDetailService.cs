@@ -14,5 +14,7 @@ namespace Business.Abstraction
         IEnumerable<DetailModel> FindByDate(DateTime dateTime);
 
         Task<DetailModel> FindByTemplateId(int templateId);
+
+        Task DeleteById(int detailId);
     }
 }

@@ -48,5 +48,13 @@ namespace API.Controllers
 
             return Ok(detail);
         }
+
+        [HttpDelete("{detailId}")]
+        public async Task<ActionResult> DeleteById(int detailId)
+        {
+            await _detailService.DeleteById(detailId);
+
+            return Ok();
+        }
     }
 }
