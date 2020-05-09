@@ -30,9 +30,14 @@ namespace Data.Implementation
             await _dbSet.AddAsync(entity);
         }
 
-        public void Delete(TEntity entity)
+        public async Task DeleteByIdAsync(int id)
         {
-            _dbSet.Remove(entity);
+            var tEntity = await _dbSet.FindAsync(id);
+
+            if (tEntity != null)
+            {
+                _dbSet.Remove(tEntity);
+            }
         }
 
         public void Update(TEntity entity)
