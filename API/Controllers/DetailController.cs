@@ -10,11 +10,11 @@ namespace API.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class DetailController : ControllerBase
+    public class DetailsController : ControllerBase
     {
         private readonly IDetailService _detailService;
 
-        public DetailController(IDetailService detailService)
+        public DetailsController(IDetailService detailService)
         {
             _detailService = detailService;
         }
@@ -44,7 +44,7 @@ namespace API.Controllers
         [HttpGet("{templateId:int}")]
         public async Task<ActionResult<DetailModel>> GetByTemplateId(int templateId)
         {
-            var detail = _detailService.FindByTemplateId(templateId);
+            var detail = await _detailService.FindByTemplateId(templateId);
 
             return Ok(detail);
         }
