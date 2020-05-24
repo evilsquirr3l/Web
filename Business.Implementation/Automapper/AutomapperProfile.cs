@@ -15,6 +15,10 @@ namespace Business.Implementation.Automapper
             CreateMap<DetailTemplate, DetailTemplateModel>().ReverseMap();
 
             CreateMap<Production, ProductionModel>().ReverseMap();
+            
+            CreateMap<UserRegistrationModel, User>()
+                .ForMember(u => u.UserName, 
+                    opt => opt.MapFrom(x => x.Email));
         }
     }
 }
