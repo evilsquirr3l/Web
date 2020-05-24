@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Data.Abstraction
 {
@@ -12,6 +13,8 @@ namespace Data.Abstraction
         public IRepository<Production> ProductionRepository { get; }
 
         public IRepository<Detail> DetailRepository { get; }
+        
+        UserManager<User> UserManager { get; }
 
         Task<int> Save();
     }
