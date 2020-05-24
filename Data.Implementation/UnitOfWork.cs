@@ -14,7 +14,7 @@ namespace Data.Implementation
             IRepository<Production> productionRepository,
             IRepository<Detail> detailRepository, 
             ProductionDbContext context, 
-            UserManager<User> userManager)
+            UserManager<User> userManager, SignInManager<User> signInManager)
         {
             CategoryRepository = categoryRepository;
             DetailTemplateRepository = detailTemplateRepository;
@@ -22,6 +22,7 @@ namespace Data.Implementation
             DetailRepository = detailRepository;
             _context = context;
             UserManager = userManager;
+            SignInManager = signInManager;
         }
 
         public IRepository<Category> CategoryRepository { get; }
@@ -29,6 +30,7 @@ namespace Data.Implementation
         public IRepository<Production> ProductionRepository { get; }
         public IRepository<Detail> DetailRepository { get; }
         public UserManager<User> UserManager { get; }
+        public SignInManager<User> SignInManager { get; }
 
         public async Task<int> Save()
         {
