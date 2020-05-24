@@ -9,6 +9,8 @@ namespace Business.Abstraction
     {
         Task<IdentityResult> Register(UserRegistrationModel model);
         
-        Task<ClaimsIdentity> Login(UserLoginModel model);
+        Task<SignInResult> Login(UserLoginModel model);
+
+        Task SignOut();
     }
 }

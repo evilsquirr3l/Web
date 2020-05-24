@@ -28,22 +28,16 @@ namespace Business.Implementation.Services
             return result;
         }
 
-        public async Task<ClaimsIdentity> Login(UserLoginModel model)
+        public async Task<SignInResult> Login(UserLoginModel model)
         {
-            var user = await _unit.UserManager.FindByEmailAsync(model.Email);
+            var result = await _unit.SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 
-            var result = await _unit.UserManager.CheckPasswordAsync(user, model.Password);
+            return result;
+        }
 
-            if (user != null && await _unit.UserManager.CheckPasswordAsync(user, model.Password))
-            {
-                var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
-                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-
-                return identity;
-            }
-
-            return null;
+        public async Task SignOut()
+        {
+            await _unit.SignInManager.SignOutAsync();
         }
     }
 }
