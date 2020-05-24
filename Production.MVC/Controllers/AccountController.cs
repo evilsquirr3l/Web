@@ -55,24 +55,42 @@ namespace Production.MVC.Controllers
  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UserLoginModel model)
+        public async Task<IActionResult> Login(UserLoginModel model, string returnUrl = null)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            
-            var claims =  await _userService.Login(model);
 
-            if (claims == null)
+            var result = await _userService.Login(model);
+            
+            if (result.Succeeded)
             {
-                ModelState.AddModelError("", "Invalid UserName or Password");
+                return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid email or password.");
                 return View();
             }
-
-            await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
-                new ClaimsPrincipal(claims));
-                
+        }
+        
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignOut()
+        {
+            await _userService.SignOut();
+ 
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
