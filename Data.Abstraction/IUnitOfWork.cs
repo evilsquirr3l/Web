@@ -15,6 +15,8 @@ namespace Data.Abstraction
         public IRepository<Detail> DetailRepository { get; }
         
         UserManager<User> UserManager { get; }
+        
+        SignInManager<User> SignInManager { get; }
 
         Task<int> Save();
     }
