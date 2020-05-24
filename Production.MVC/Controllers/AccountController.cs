@@ -29,9 +29,17 @@ namespace Production.MVC.Controllers
                 return View(model);
             }
             
-            var message =  await _userService.Register(model);
+            var result =  await _userService.Register(model);
 
-            return Content(message);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.TryAddModelError(error.Code, error.Description);
+                }
+                
+                return View(model);
+            }
             
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,6 +7,7 @@ using Business.Abstraction;
 using Business.Models;
 using Data.Abstraction;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Business.Implementation.Services
 {
@@ -20,20 +22,18 @@ namespace Business.Implementation.Services
             _unit = unit;
         }
 
-        public async Task<string> Register(UserRegistrationModel model)
+        public async Task<IdentityResult> Register(UserRegistrationModel model)
         {
             var user = _mapper.Map<User>(model);
 
             var result = await _unit.UserManager.CreateAsync(user, model.Password);
 
-            if (!result.Succeeded)
-            {
-                var message = result.Errors.Aggregate("", (current, identityError) => current + (identityError.Code + " " + identityError.Description + "\n"));
+            // if (!result.Succeeded)
+            // {
+            //     return result.Errors.ToDictionary(error => error.Code, error => error.Description);
+            // }
 
-                return message;
-            }
-
-            return "OK";
+            return result;
         }
     }
 }
