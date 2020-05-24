@@ -2,6 +2,8 @@ using AutoMapper;
 using Business.Abstraction;
 using Business.Implementation.Automapper;
 using Business.Implementation.Services;
+using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Business.Implementation
@@ -14,6 +16,8 @@ namespace Business.Implementation
             services.AddTransient<IProductionService, ProductionService>();
             services.AddTransient<ITemplateService, TemplateService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+            
             var mapperConfig = new MapperConfiguration(c => c.AddProfile(new AutomapperProfile()));
 
             var mapper = mapperConfig.CreateMapper();
