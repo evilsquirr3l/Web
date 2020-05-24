@@ -5,7 +5,7 @@ using Business.Abstraction;
 using Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers
+namespace Production.API.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
