@@ -13,7 +13,7 @@ namespace Business.Implementation
             services.AddTransient<IDetailService, DetailService>();
             services.AddTransient<IProductionService, ProductionService>();
             services.AddTransient<ITemplateService, TemplateService>();
-
+            services.AddTransient<IUserService, UserService>();
             var mapperConfig = new MapperConfiguration(c => c.AddProfile(new AutomapperProfile()));
 
             var mapper = mapperConfig.CreateMapper();
