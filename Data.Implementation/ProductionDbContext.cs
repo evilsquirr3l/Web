@@ -1,10 +1,11 @@
 using System;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Data.Implementation
 {
-    public class ProductionDbContext : DbContext
+    public class ProductionDbContext : IdentityDbContext<User>
     {
         public ProductionDbContext(DbContextOptions<ProductionDbContext> options) : base(options)
         {
