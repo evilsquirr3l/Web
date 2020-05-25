@@ -27,16 +27,6 @@ namespace Production.MVC
             services.RegisterDataServices(Configuration.GetConnectionString("Production"));
 
             services.RegisterBusinessServices();
-
-            services.AddIdentity<User, IdentityRole>(opt =>
-                {
-                    opt.Password.RequireUppercase = false;
-                    opt.Password.RequireNonAlphanumeric = false;
-                    opt.Password.RequiredLength = 4;
-                    opt.Password.RequireDigit = false;
-                    opt.User.RequireUniqueEmail = true;
-                })
-                .AddEntityFrameworkStores<ProductionDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
