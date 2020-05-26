@@ -36,7 +36,9 @@ namespace Business.Implementation.Services
             using (var client = new SmtpClient())
             {
                 await client.ConnectAsync("smtp.gmail.com", 465, true);
-                await client.AuthenticateAsync("kpi.acts.it81@gmail.com", "it81top42");
+                
+                #error Insert email here
+                await client.AuthenticateAsync("email", "password");
                 await client.SendAsync(emailMessage);
  
                 await client.DisconnectAsync(true);
