@@ -25,7 +25,8 @@ namespace Data.Implementation
                     opt.Password.RequireDigit = false;
                     opt.User.RequireUniqueEmail = true;
                 })
-                .AddEntityFrameworkStores<ProductionDbContext>();
+                .AddEntityFrameworkStores<ProductionDbContext>()
+                .AddDefaultTokenProviders();
             
             return services;
         }
