@@ -17,6 +17,7 @@ namespace Business.Implementation
             services.AddTransient<ITemplateService, TemplateService>();
             services.AddTransient<IUserService, UserService>();
             services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+            services.AddTransient<IEmailService, EmailService>();
             
             var mapperConfig = new MapperConfiguration(c => c.AddProfile(new AutomapperProfile()));
 
